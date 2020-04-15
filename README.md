@@ -112,13 +112,17 @@ run `mymvn clean package -Preset-db -f extensions/database/pom.xml` or `myepmvn-
 
 # Reference
 ## mymvn commands
+* `mymvnenv`                   evaluate environment variables
+* `mymvnenv-jmx`               evaluate environment variables with jmx options
 * `mymvn`                      equivalent to `mvn`
+* `mymvn-jmx`                  equivalent to `mvn` with jmx options
 * `mymvn-ciskip`               equivalent to `mvn clean install -DskipAllTests`      
 * `mymvn-debug`                equivalent to `mvnDebug`             
 * `mymvn-run-tomcat7`          equivalent to `mvn clean tomcat7:run-war`       
 * `mymvn-run-tomcat7-debug`    equivalent to `mvnDebug clean tomcat7:run-war`
-* `mymvn-run-tomcat8`          equivalent to `mvn clean tomcat7:run-war`       
-* `mymvn-run-tomcat8-debug`    equivalent to `mvnDebug clean tomcat7:run-war`
+* `mymvn-run-tomcat8`          equivalent to `mvn clean tomcat8:run-war`
+* `mymvn-run-tomcat8-debug`    equivalent to `mvnDebug clean tomcat8:run-war`
+* `mymvn-run-tomcat8-jmx`      equivalent to `mvn clean tomcat8:run-war` with enabled jmx options ( jmx service listens to port 6969)
 
 ## myepmvn commands
 * `myepmvn-reset-db`         reset db
@@ -145,6 +149,7 @@ run `mymvn clean package -Preset-db -f extensions/database/pom.xml` or `myepmvn-
 * `myepmvn-run-search8-debug` start up search server in debug mode with tomcat 8
 * `myepmvn-build-cortex`     build cortex module
 * `myepmvn-build-ext-core`   build extension core module
+* `myepmvn-run-cortex8-jmx`       start up cortex server with tomcat 8 with jmx options.
 
 ## mydocker commands
 * `mydocker-start`             start predefined container.

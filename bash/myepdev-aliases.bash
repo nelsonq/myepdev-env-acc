@@ -76,6 +76,7 @@ alias mydocker-cleanup-dangling-images='docker rmi $(docker images -f "dangling=
 alias mymvn-run-tomcat7='mymvn clean tomcat7:run-war'
 alias mymvn-run-tomcat7-debug='mymvn-debug clean tomcat7:run-war'
 alias mymvn-run-tomcat8='mymvn clean tomcat8:run-war'
+alias mymvn-run-tomcat8-jmx='mymvn-jmx clean tomcat8:run-war'
 alias mymvn-run-tomcat8-debug='mymvn-debug clean tomcat8:run-war'
 alias myepmvn-run-cortex='mymvn-run-tomcat7 -f extensions/cortex/ext-cortex-webapp/pom.xml'
 alias myepmvn-run-search='mymvn-run-tomcat7 -f extensions/search/ext-search-webapp/pom.xml'
@@ -101,6 +102,8 @@ alias myepmvn-run-cm8-debug='mymvn-run-tomcat8-debug -f extensions/cm/ext-cm-mod
 alias myepmvn-run-int8-debug='mymvn-run-tomcat8-debug -f extensions/integration/ext-integration-webapp/pom.xml'
 alias myepmvn-run-batch8-debug='mymvn-run-tomcat8-debug -f extensions/batch/ext-batch-webapp/pom.xml'
 
+alias myepmvn-run-cortex8-jmx='mymvn-run-tomcat8-jmx -f extensions/cortex/ext-cortex-webapp/pom.xml'
+
 # maven clean and build
 alias mymvn-ciskip='mymvn clean install -DskipAllTests'
 
@@ -117,7 +120,13 @@ alias mymvn-debug='mydockerenv&&MY_MVN_PROJ_PATH=$(echo $PWD | sed -n '"'"'s|'"'
 
 # extract ep version
 # echo $PWD | sed -n 's|'"$HOME"'/Work/githome/\([^/]*\).*|\1|p'
-alias mymvn='export MY_EP_VERSION=$(echo $PWD | sed -n '"'"'s|'"'"'"$HOME"'"'"'/Work/githome/[^/^_].*_ep\([0-9]\{1,10\}[x]\{0,1\}\)_.*|\1|p'"'"')&&export M2_HOME=$(printenv M2_HOME_EP$(echo $MY_EP_VERSION))&&export JAVA_HOME=$(printenv JAVA_HOME_EP$(echo $MY_EP_VERSION))&&export MAVEN_OPTS=$(printenv MAVEN_OPTS_EP$(echo $MY_EP_VERSION))&&export JAVA_OPTS=$(printenv JAVA_OPTS_EP$(echo $MY_EP_VERSION))&&basemymvn'
+alias mymvnenv='export MY_EP_VERSION=$(echo $PWD | sed -n '"'"'s|'"'"'"$HOME"'"'"'/Work/githome/[^/^_].*_ep\([0-9]\{1,10\}[x]\{0,1\}\)_.*|\1|p'"'"')&&export M2_HOME=$(printenv M2_HOME_EP$(echo $MY_EP_VERSION))&&export JAVA_HOME=$(printenv JAVA_HOME_EP$(echo $MY_EP_VERSION))&&export MAVEN_OPTS=$(printenv MAVEN_OPTS_EP$(echo $MY_EP_VERSION))&&export JAVA_OPTS=$(printenv JAVA_OPTS_EP$(echo $MY_EP_VERSION))'
+# override MAVEN_OPTS in mymvnenv
+alias mymvnenv-jmx='mymvnenv&&export MAVEN_OPTS=$(printenv MAVEN_OPTS_EP$(echo $MY_EP_VERSION))$JMX_OPTS'
+
+alias mymvn='mymvnenv&&basemymvn'
+alias mymvn-jmx='mymvnenv-jmx&&basemymvn'
+
 
 alias mydocker-run-jenkins="docker run -u root --name myjenkinsci --rm -d -p 8080:8080 -p 50000:50000 -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock nelsonqiao/myjenkinsci"
 

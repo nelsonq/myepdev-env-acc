@@ -16,6 +16,7 @@ export MAVEN_OPTS_339='-Xmx2048m -XX:ReservedCodeCacheSize=128m -Dsun.lang.Class
 export MAVEN_OPTS_352=$MAVEN_OPTS_339
 export MAVEN_OPTS_354=$MAVEN_OPTS_352
 export MAVEN_OPTS_362=$MAVEN_OPTS_354
+export JMX_OPTS=' -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=6969 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false'
 
 # JAVA_HOME configuration
 # [check point] In case of jdk got upgrade.
@@ -65,7 +66,7 @@ export JAVA_HOME_EP75=$JAVA_HOME_8U212;export M2_HOME_EP75=$M2_HOME_352;export J
 export JAVA_HOME_EP76=$JAVA_HOME_8U212;export M2_HOME_EP76=$M2_HOME_362;export JAVA_OPTS_EP76=$JAVA_OPTS_8;export MAVEN_OPTS_EP76=$MAVEN_OPTS_362
 export JAVA_HOME_EP8=$JAVA_HOME_8U212;export M2_HOME_EP8=$M2_HOME_362;export JAVA_OPTS_EP8=$JAVA_OPTS_8;export MAVEN_OPTS_EP8=$MAVEN_OPTS_362
 
-# [check point] In case of ep commerce got new release. 
+# [check point] In case of ep commerce got new release.
 export JAVA_HOME_EP7x=$JAVA_HOME_EP76;export M2_HOME_EP7x=$M2_HOME_EP76;export JAVA_OPTS_EP7x=$JAVA_OPTS_EP76;export MAVEN_OPTS_EP7x=$MAVEN_OPTS_EP76
 export JAVA_HOME_EP8x=$JAVA_HOME_EP8;export M2_HOME_EP8x=$M2_HOME_EP8;export JAVA_OPTS_EP8x=$JAVA_OPTS_EP8;export MAVEN_OPTS_EP8x=$MAVEN_OPTS_EP8
 
